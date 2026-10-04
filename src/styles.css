@@ -1,0 +1,271 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #e5e5e5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.proto-root {
+  min-height: 100vh;
+  font-family: "Figtree", system-ui, sans-serif;
+}
+
+.proto-stage {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.proto-screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  overflow: hidden;
+}
+
+.proto-screen img,
+.proto-overlay img {
+  display: block;
+  user-select: none;
+}
+
+[data-hotspot] {
+  cursor: pointer;
+}
+
+.show-hotspots [data-hotspot] {
+  outline: 2px solid rgba(13, 153, 255, 0.85);
+  outline-offset: -1px;
+  background-color: rgba(13, 153, 255, 0.18);
+}
+
+.proto-overlay-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: auto;
+}
+
+.proto-backdrop {
+  position: fixed;
+  inset: 0;
+  animation: proto-fade 0.25s ease;
+}
+
+.proto-overlay {
+  position: absolute;
+  transform-origin: 0 0;
+  animation: proto-fade 0.3s ease;
+}
+
+@keyframes proto-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.proto-ui {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 100;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  font-family: system-ui, sans-serif;
+}
+
+.proto-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(20, 20, 20, 0.85);
+  color: #fff;
+  font: 500 13px/1 system-ui, sans-serif;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.proto-btn:hover {
+  background: #000;
+}
+
+.proto-menu {
+  position: absolute;
+  left: 0;
+  bottom: 44px;
+  width: 240px;
+  max-height: 60vh;
+  overflow: auto;
+  padding: 6px;
+  border-radius: 12px;
+  background: rgba(20, 20, 20, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.proto-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: #ddd;
+  text-align: left;
+  font: 13px system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.proto-menu button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.proto-menu button.is-current {
+  background: #0d99ff;
+  color: #fff;
+}
+
+.proto-message {
+  padding: 40px;
+  font: 16px system-ui, sans-serif;
+}
+
+/* ---------- overview ---------- */
+.ov {
+  min-height: 100vh;
+  padding: 32px 32px 80px;
+  background: #f0f0f0;
+  font-family: "Figtree", system-ui, sans-serif;
+  color: #111;
+}
+
+.ov-head {
+  max-width: 1400px;
+  margin: 0 auto 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.ov-head h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.ov-head p {
+  margin: 0;
+  color: #555;
+  font-size: 15px;
+}
+
+.ov-start {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 999px;
+  background: #0075ff;
+  color: #fff;
+  font: 700 15px "Figtree", system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.ov-start:hover {
+  background: #005fd1;
+}
+
+.ov-group {
+  max-width: 1400px;
+  margin: 32px auto 0;
+}
+
+.ov-group h2 {
+  margin: 0 0 14px;
+  font-size: 19px;
+}
+
+.ov-group h2 span {
+  margin-left: 6px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: #ddd;
+  font-size: 13px;
+  font-weight: 600;
+  vertical-align: 2px;
+}
+
+.ov-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 20px;
+  justify-content: start;
+}
+
+.ov-card {
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.ov-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
+
+.ov-thumb {
+  position: relative;
+  width: 300px;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.ov-thumb-inner {
+  position: absolute;
+  transform-origin: 0 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ov-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px 12px;
+}
+
+.ov-meta strong {
+  font-size: 14px;
+}
+
+.ov-meta span {
+  font-size: 12px;
+  color: #777;
+}
+
+@media (max-width: 680px) {
+  .ov {
+    padding: 20px 14px 80px;
+  }
+  .ov-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
